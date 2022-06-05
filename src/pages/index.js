@@ -124,8 +124,6 @@ const IndexPage = () => {
     setPosts(defaultState.filter((post) => post.tags.includes(selectTag)));
   }, [selectTag]);
 
- 
-
   useEffect(() => {
     const unSub = onAuthStateChanged(auth, (user) => {
       if (user) {
@@ -271,9 +269,9 @@ const IndexPage = () => {
                       About Me
                     </li>
                   </a>
-                  <a href="#" onClick={closeModal}>
+                  <a href="#sub" onClick={closeModal}>
                     <li className="p-2 text-white text-md duration-700 hover:scale-125">
-                      Contact
+                      Subscribe
                     </li>
                   </a>
                   {user ? (
@@ -342,7 +340,7 @@ const IndexPage = () => {
           </button>
         </div>
 
-        <div className="flex justify-evenly xs:mx-3 xs:flex-col sm:flex-row flex-wrap">
+        <div className="flex justify-evenly xs:mx-3 xs:flex-col sm:flex-row flex-wrap p-3">
           {posts.map((post, index) => (
             <Card
               post={post}
