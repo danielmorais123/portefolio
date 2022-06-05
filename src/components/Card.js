@@ -3,22 +3,26 @@ import Img from "gatsby-image";
 
 const Card = ({ post, githubIcon }) => {
   return (
-    <div className=" sm:w-80 bg-bgcolor p-3 rounded-md flex flex-col xs:m-3 text-center ">
+    <div
+      className=" sm:w-105 bg-rose-400 p-3 rounded-md flex flex-col xs:m-3 text-center justify-evenly z-[1]"
+      
+    >
       <Img
         fluid={post.image}
-        className=" h-auto sm:w-72 md:h-auto md:rounded-none mx-auto xs:mx-4 self-center "
+        className="xs:w-44 h-auto sm:w-52 md:h-auto md:rounded-none mx-auto xs:mx-4 self-center "
       />
-
-      <h3 className="text-white"> {post.description}</h3>
       <div>
-        {post.tags.map((tag, index) => (
-          <button
-            className="bg-gray-200 p-1 rounded-full text-xs hover:opacity-75 m-1"
-            key={index}
-          >
-            {tag}
-          </button>
-        ))}
+        <h3 className="text-white"> {post.description}</h3>
+        <div>
+          {post.tags.map((tag, index) => (
+            <button
+              className="bg-gray-200 p-1 rounded-full text-xs hover:opacity-75 m-1"
+              key={index}
+            >
+              {tag}
+            </button>
+          ))}
+        </div>
       </div>
 
       <div className="flex justify-between items-center ">

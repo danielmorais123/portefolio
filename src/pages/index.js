@@ -11,7 +11,7 @@ import { useStaticQuery, graphql } from "gatsby";
 import Img from "gatsby-image";
 import Wave from "react-wavify";
 import emailjs from "@emailjs/browser";
-import Card from "../components/card";
+import Card from "../components/Card";
 import AboutMeCard from "../components/AboutMeCard";
 
 // markup
@@ -224,9 +224,9 @@ const IndexPage = () => {
                   About Me
                 </li>
               </a>
-              <a href="#">
+              <a href="#sub">
                 <li className="p-2 text-white text-md duration-700 hover:scale-125">
-                  Contact
+                  Subscribe 
                 </li>
               </a>
               {user ? (
@@ -331,43 +331,9 @@ const IndexPage = () => {
       </div>
       <div className="min-h-screen bg-white relative" id="portefolio">
         <h1 className="flex justify-center text-4xl font-bold">My Projects</h1>
-        <div
-          className="flex justify-evenly xs:mx-3 xs:flex-col sm:flex-row flex-wrap"
-          
-        >
+        <div className="flex justify-evenly xs:mx-3 xs:flex-col sm:flex-row flex-wrap">
           {posts.map((post, index) => (
-            <div
-              className=" sm:w-105 bg-rose-400 p-3 rounded-md flex flex-col xs:m-3 text-center justify-evenly z-[1]"
-              key={index}
-            >
-              <Img
-                fluid={post.image}
-                className="xs:w-44 h-auto sm:w-52 md:h-auto md:rounded-none mx-auto xs:mx-4 self-center "
-              />
-              <div>
-                <h3 className="text-white"> {post.description}</h3>
-                <div>
-                  {post.tags.map((tag, index) => (
-                    <button
-                      className="bg-gray-200 p-1 rounded-full text-xs hover:opacity-75 m-1"
-                      key={index}
-                    >
-                      {tag}
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              <div className="flex justify-between items-center ">
-                <a href={post.githubLink} className="cursor-pointer">
-                  <Img className="h-7 w-7" fluid={githubIcon} />
-                </a>
-
-                <h5 className=" mt-2 self-end text-white hover:scale-125 mr-2 duration-200 cursor-pointer">
-                  Daniel Morais
-                </h5>
-              </div>
-            </div>
+            <Card post={post} key={index} githubIcon={githubIcon} />
           ))}
         </div>
         <Wave
@@ -390,7 +356,7 @@ const IndexPage = () => {
           <Img className="xs:w-72 sm:w-96" fluid={aboutme} />
           <AboutMeCard fluid={daniel} icons={icons} />
         </div>
-        <div className="flex justify-center flex-col items-center ">
+        <div className="flex justify-center flex-col items-center " id="sub">
           <h3 className="font-bold text-center p-2">
             Subscribe my Notifications, so you can be notificated when I have
             something new to show you!
