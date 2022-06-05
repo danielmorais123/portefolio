@@ -50,8 +50,7 @@ const IndexPage = () => {
   const shield = data.allFile.edges[8].node.childImageSharp.fluid;
   const instagram = data.allFile.edges[9].node.childImageSharp.fluid;
   const uberEats = data.allFile.edges[10].node.childImageSharp.fluid;
-
-  const [posts, setPosts] = useState([
+  const defaultState = [
     {
       description:
         " I have done some projects but my recent is this one, Uber Clone. ",
@@ -87,7 +86,10 @@ const IndexPage = () => {
       githubLink: "https://github.com/danielmorais123/uber-eats-clone",
       image: uberEats,
     },
-  ]);
+  ];
+
+  const [posts, setPosts] = useState(defaultState);
+  const [selectTag, setSelectTag] = useState("Firebase");
   const aboutme = data.allFile.edges[0].node.childImageSharp.fluid;
 
   const programmer = data.allFile.edges[2].node.childImageSharp.fluid;
@@ -119,6 +121,10 @@ const IndexPage = () => {
   };
 
   useEffect(() => {
+    setPosts(defaultState.filter((post) => post.tags.includes(selectTag)));
+  }, [selectTag]);
+
+  useEffect(() => {
     const timer = setTimeout(() => {
       setOpenNav(false);
     }, 3000);
@@ -144,6 +150,10 @@ const IndexPage = () => {
     });
 
     return () => unSub();
+  }, []);
+
+  useEffect(() => {
+    setPosts(defaultState);
   }, []);
 
   const handleSignInGoogle = () => {
@@ -226,7 +236,7 @@ const IndexPage = () => {
               </a>
               <a href="#sub">
                 <li className="p-2 text-white text-md duration-700 hover:scale-125">
-                  Subscribe 
+                  Subscribe
                 </li>
               </a>
               {user ? (
@@ -330,11 +340,23 @@ const IndexPage = () => {
         </div>
       </div>
       <div className="min-h-screen bg-white relative" id="portefolio">
-        <h1 className="flex justify-center text-4xl font-bold">My Projects</h1>
+        <div className="flex xs:flex-col md:flex-row justify-center items-center md:mx-2 xs:mt-1">
+          <h1 className="flex justify-center text-4xl font-bold">My Projects</h1>
+          <button className="h-10 text-white bg-googleBg rounded-full p-2 mx-1 text-md duration-700 hover:opacity-90 hover:scale-110" onClick={() => setPosts(defaultState)}>
+            Show All
+          </button>
+        </div>
+        
         <div className="flex justify-evenly xs:mx-3 xs:flex-col sm:flex-row flex-wrap">
           {posts.map((post, index) => (
-            <Card post={post} key={index} githubIcon={githubIcon} />
+            <Card
+              post={post}
+              key={index}
+              githubIcon={githubIcon}
+              setSelectTag={setSelectTag}
+            />
           ))}
+          
         </div>
         <Wave
           fill="#6C63FF"
@@ -370,6 +392,7 @@ const IndexPage = () => {
               name="user_email"
               placeholder="Insert your Email"
               className="px-8 py-1 sm:w-1/2 rounded-full xs:w-full"
+              value={user ? user.email : ""}
             />
 
             <textarea
