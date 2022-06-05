@@ -3,7 +3,7 @@ import Img from "gatsby-image";
 
 const AboutMeCard = ({ fluid, icons }) => {
   return (
-    <div className=" xs:h-68 md:w-1/2  bg-bgcolor  rounded-md flex xs:flex-row xs:m-3 text-center items-center md:flex-col sm:p-3 md:content-end">
+    <div className=" xs:h-68 md:w-1/2  bg-bgcolor  rounded-md flex xs:flex-row xs:m-3 text-center items-center md:flex-col sm:p-3 md:content-end hover:scale-110 transition-all">
       <Img
         fluid={fluid}
         className=" xs:w-60 xs:ml-2  md:w-32 md:h-32 md:rounded-full  "

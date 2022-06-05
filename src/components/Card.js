@@ -3,7 +3,7 @@ import Img from "gatsby-image";
 
 const Card = ({ post, githubIcon, setSelectTag }) => {
   return (
-    <div className=" sm:w-105 bg-rose-400 p-3 rounded-md flex flex-col xs:m-3 text-center justify-evenly z-[1]">
+    <div className=" sm:w-105 bg-rose-400 p-3 rounded-md flex flex-col xs:m-3 text-center justify-evenly z-[1] hover:scale-110 transition-all hover:bg-bgcolor">
       <Img
         fluid={post.image}
         className="xs:w-44 h-auto sm:w-52 md:h-auto md:rounded-none mx-auto xs:mx-4 self-center "

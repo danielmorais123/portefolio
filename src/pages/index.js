@@ -342,7 +342,7 @@ const IndexPage = () => {
       <div className="min-h-screen bg-white relative" id="portefolio">
         <div className="flex xs:flex-col md:flex-row justify-center items-center md:mx-2 xs:mt-1">
           <h1 className="flex justify-center text-4xl font-bold">My Projects</h1>
-          <button className="h-10 text-white bg-googleBg rounded-full p-2 mx-1 text-md duration-700 hover:opacity-90 hover:scale-110" onClick={() => setPosts(defaultState)}>
+          <button className="h-10 text-white bg-rose-400 rounded-full px-3 py-1 mx-1 text-md duration-700 hover:bg-bgcolor " onClick={() => setPosts(defaultState)}>
             Show All
           </button>
         </div>
