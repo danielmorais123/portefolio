@@ -11,7 +11,7 @@ const AboutMeCard = ({ fluid, icons }) => {
       <div>
         
        
-        <h3 className="text-white">
+        <h3 className="text-white pt-1">
           " Hey, my name is Daniel, I'm almost a Software Engineer,I'm currently
           doing an internship at Build Up Labs, in Lisbon and finishing my
           course in Instituto Politécnico de Setúbal. "

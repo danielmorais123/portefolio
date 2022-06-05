@@ -124,12 +124,7 @@ const IndexPage = () => {
     setPosts(defaultState.filter((post) => post.tags.includes(selectTag)));
   }, [selectTag]);
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setOpenNav(false);
-    }, 3000);
-    return () => clearTimeout(timer);
-  }, [openNav]);
+ 
 
   useEffect(() => {
     const unSub = onAuthStateChanged(auth, (user) => {
@@ -221,7 +216,7 @@ const IndexPage = () => {
               style={{ position: openNav ? "absolute" : "static", top: 25 }}
             />
           </div>
-          <div>
+          <div className="relative">
             <ul className=" m-3 p-2 xs:hidden sm:flex">
               <a href="#portefolio">
                 <li className="p-2 text-md text-white  duration-700 hover:scale-125 ">
@@ -264,19 +259,19 @@ const IndexPage = () => {
               <div className="w-5 h-1 bg-gray-600 mb-1"></div>
             </button>
             {openNav ? (
-              <div className="min-h-screen">
-                <ul className=" m-3 p-2 flex-col flex z-[1]">
-                  <a href="#portefolio">
+              <div className="sm:hidden">
+                <ul className="m-3 p-2 flex-col flex z-[1] ">
+                  <a href="#portefolio" onClick={closeModal}>
                     <li className="p-2 text-md text-white  duration-700 hover:scale-125 ">
                       Portefolio
                     </li>
                   </a>
-                  <a href="#aboutme">
+                  <a href="#aboutme" onClick={closeModal}>
                     <li className="p-2 text-md text-white  duration-700 hover:scale-125">
                       About Me
                     </li>
                   </a>
-                  <a href="#">
+                  <a href="#" onClick={closeModal}>
                     <li className="p-2 text-white text-md duration-700 hover:scale-125">
                       Contact
                     </li>
@@ -304,12 +299,7 @@ const IndexPage = () => {
           </div>
         </div>
         <div className="grow bg-bgcolor items-center ">
-          <div
-            className="flex items-center justify-evenly xs:flex-col sm:flex-row xs:h-full sm:p-8 "
-            style={{
-              display: openNav ? "none" : "flex",
-            }}
-          >
+          <div className="flex items-center justify-evenly xs:flex-col sm:flex-row xs:h-full sm:p-8 ">
             <div className="flex flex-col p-5">
               <h1 className="text-4xl text-center text-white font-bold my-5">
                 Welcome to My Portefolio
@@ -341,12 +331,17 @@ const IndexPage = () => {
       </div>
       <div className="min-h-screen bg-white relative" id="portefolio">
         <div className="flex xs:flex-col md:flex-row justify-center items-center md:mx-2 xs:my-2">
-          <h1 className="flex justify-center text-4xl font-bold ">My Projects</h1>
-          <button className="h-10 text-white bg-rose-400 rounded-full px-3 py-1 mx-1 text-md duration-700 hover:bg-bgcolor " onClick={() => setPosts(defaultState)}>
+          <h1 className="flex justify-center text-4xl font-bold ">
+            My Projects
+          </h1>
+          <button
+            className="h-10 text-white bg-rose-400 rounded-full px-3 py-1 mx-1 text-md duration-700 hover:bg-bgcolor "
+            onClick={() => setPosts(defaultState)}
+          >
             Show All
           </button>
         </div>
-        
+
         <div className="flex justify-evenly xs:mx-3 xs:flex-col sm:flex-row flex-wrap">
           {posts.map((post, index) => (
             <Card
@@ -356,7 +351,6 @@ const IndexPage = () => {
               setSelectTag={setSelectTag}
             />
           ))}
-          
         </div>
         <Wave
           fill="#6C63FF"
